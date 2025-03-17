@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Components | Minimal Docs Site</title>
+  <meta name="description" content="Explore the components available in our library">
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <a href="index.html" class="logo-link">
+            <div class="logo-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z"/><path d="M3 9V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4"/><path d="M3 14h4"/><path d="M3 19h4"/><path d="M17 14h4"/><path d="M17 19h4"/></svg>
+            </div>
+            <div class="logo-text">
+              <span class="logo-title">Docs</span>
+              <span class="logo-version">v1.0.0</span>
+            </div>
+          </a>
+        </div>
+        <div class="search-container">
+          <form>
+            <div class="search-input-wrapper">
+              <input type="text" id="search" placeholder="Search the docs..." class="search-input">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-icon"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="sidebar-content">
+        <div class="sidebar-group">
+          <div class="sidebar-group-label">Navigation</div>
+          <div class="sidebar-group-content">
+            <nav class="sidebar-menu">
+              <a href="index.html" class="sidebar-menu-item">Introduction</a>
+              <a href="getting-started.html" class="sidebar-menu-item">Getting Started</a>
+              <a href="components.html" class="sidebar-menu-item active">Components</a>
+              <a href="api-reference.html" class="sidebar-menu-item">API Reference</a>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <main class="main-content">
+      <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle Sidebar">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      
+      <div class="content">
+        <h1 class="title">Components</h1>
+        <p class="text-xl">
+          Our library provides a set of reusable components to help you build your application faster. Here's an
+          overview of some key components:
+        </p>
+        <h2 class="subtitle">Button</h2>
+        <p class="text">
+          The Button component is a versatile and customizable button that can be used for various actions in your
+          application.
+        </p>
+        <pre class="code-block">
+          <code>import { Button } from '@our-company/package';
+
+<Button variant="primary" onClick={() => console.log('Clicked!')}>
+  Click me
+</Button></code>
+        </pre>
+        <h2 class="subtitle">Card</h2>
+        <p class="text">The Card component is used to display content in a box with a consistent style.</p>
+        <pre class="code-block">
+          <code>import { Card, CardHeader, CardContent } from '@our-company/package';
+
+<Card>
+  <CardHeader>Card Title</CardHeader>
+  <CardContent>This is the card content.</CardContent>
+</Card></code>
+        </pre>
+        <h2 class="subtitle">Input</h2>
+        <p class="text">The Input component is a styled input field for collecting user data.</p>
+        <pre class="code-block">
+          <code>import { Input } from '@our-company/package';
+
+<Input placeholder="Enter your name" onChange={(e) => console.log(e.target.value)} /></code>
+        </pre>
+        <p class="text">
+          For a complete list of components and their props, please refer to our API Reference section.
+        </p>
+      </div>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+

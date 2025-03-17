@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegant Colorful Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            overflow-x: hidden;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Colorful gradient header */
+        header {
+            height: 100vh;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4, #a18cd1, #fbc2eb);
+            background-size: 300% 300%;
+            animation: gradient 15s ease infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .header-content {
+            text-align: center;
+            color: white;
+            padding: 20px;
+            max-width: 800px;
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .cta-button:hover {
+            background: white;
+            color: #a18cd1;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+
+        nav.scrolled {
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        nav.scrolled .logo {
+            color: #a18cd1;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav.scrolled .nav-links a {
+            color: #333;
+        }
+
+        .nav-links a:hover {
+            color: #fbc2eb;
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            font-size: 2.5rem;
+            color: #333;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        /* About section */
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .about-img {
+            flex: 1;
+            min-width: 300px;
+            margin-right: 50px;
+        }
+
+        .about-img img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #a18cd1;
+        }
+
+        /* Skills section */
+        .skills-section {
+            margin-top: 40px;
+        }
+
+        .skills-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+            position: relative;
+        }
+
+        .skills-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, #a18cd1, #fbc2eb);
+            margin: 10px auto 40px;
+            border-radius: 2px;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .skill-card {
+            background: white;
+            border-radius: 10px;
+            width: 180px;
+            height: 180px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: linear-gradient(135deg, rgba(161, 140, 209, 0.2), rgba(251, 194, 235, 0.2));
+            transition: height 0.3s ease;
+            z-index: 0;
+        }
+
+        .skill-card:hover::before {
+            height: 100%;
+        }
+
+        .skill-icon {
+            width: 70px;
+            height: 70px;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card:hover .skill-icon {
+            transform: scale(1.1);
+        }
+
+        .skill-name {
+            font-weight: 600;
+            color: #333;
+            font-size: 1.2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Portfolio section */
+        .portfolio {
+            background-color: #f5f5f5;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .portfolio-img {
+            width: 100%;
+            height: 250px;
+            object-fit: contain;
+            transition: transform 0.5s ease;
+        }
+
+        .portfolio-item:hover .portfolio-img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(161, 140, 209, 0.8), rgba(251, 194, 235, 0.8));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-overlay h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .portfolio-overlay p {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .view-project {
+            padding: 8px 20px;
+            background: white;
+            color: #a18cd1;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .view-project:hover {
+            background: #a18cd1;
+            color: white;
+        }
+
+        /* Services section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            line-height: 70px;
+            text-align: center;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .service-card:nth-child(1) .service-icon {
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        }
+
+        .service-card:nth-child(2) .service-icon {
+            background: linear-gradient(135deg, #a18cd1, #fbc2eb);
+        }
+
+        .service-card:nth-child(3) .service-icon {
+            background: linear-gradient(135deg, #84fab0, #8fd3f4);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        /* Contact section */
+        .contact {
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+        }
+
+        .contact-form {
+            background: white;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #a18cd1;
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(to right, #a18cd1, #fbc2eb);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(161, 140, 209, 0.4);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(161, 140, 209, 0.6);
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 50px 0 30px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .footer-info {
+            flex: 1;
+            min-width: 300px;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .footer-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-info h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(to right, #a18cd1, #fbc2eb);
+            border-radius: 2px;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateX(5px);
+        }
+
+        .contact-icon {
+            font-size: 1.2rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover .contact-icon {
+            background: linear-gradient(to right, #a18cd1, #fbc2eb);
+            transform: scale(1.1);
+        }
+
+        .contact-text {
+            font-size: 0.95rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .copyright {
+            opacity: 0.7;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            margin-top: 10px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-info {
+                text-align: center;
+                margin-bottom: 30px;
+            }
+
+            .footer-info h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .contact-details {
+                align-items: center;
+            }
+        }
+
+        /* Skills & Technologies Section */
+        .skills-technologies {
+            padding: 80px 0;
+            background-color: #fff;
+        }
+
+        .skills-technologies .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #333;
+            text-align: center;
+        }
+
+        .skills-technologies .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #a18cd1, #fbc2eb);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .skill-box {
+            background: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            width: 200px;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-box:hover {
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-box::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #a18cd1, #fbc2eb);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .skill-box:hover::after {
+            transform: scaleX(1);
+        }
+
+        .skill-logo {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-box:hover .skill-logo {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .skill-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+            text-align: center;
+        }
+
+        /* Mobile responsiveness */
+        @media screen and (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            .subtitle {
+                font-size: 1.4rem;
+            }
+
+            .about-img {
+                margin-right: 0;
+                margin-bottom: 30px;
+            }
+
+            .about-content,
+            .contact-flex {
+                flex-direction: column;
+            }
+
+            .contact-form {
+                padding: 30px;
+            }
+
+            nav {
+                padding: 15px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .skills-grid {
+                gap: 15px;
+            }
+
+            .skill-box {
+                width: 150px;
+                height: 150px;
+                padding: 20px;
+            }
+
+            .skill-logo {
+                width: 60px;
+                height: 60px;
+            }
+        }
+
+        /* Progress bar animation for skills */
+        .skill-progress {
+            width: 100%;
+            height: 5px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            margin-top: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-progress-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            border-radius: 10px;
+            width: 0;
+            transition: width 1.5s ease-in-out;
+        }
+
+        .skill-box:hover .skill-progress-bar {
+            width: var(--progress, 90%);
+        }
+
+        .java-bar {
+            background: linear-gradient(to right, #5382a1, #f89820);
+            --progress: 95%;
+        }
+
+        .js-bar {
+            background: linear-gradient(to right, #f7df1e, #f0db4f);
+            --progress: 85%;
+        }
+
+        .html-bar {
+            background: linear-gradient(to right, #e34c26, #f06529);
+            --progress: 90%;
+        }
+
+        .css-bar {
+            background: linear-gradient(to right, #264de4, #2965f1);
+            --progress: 85%;
+        }
+
+        .mysql-bar {
+            background: linear-gradient(to right, #00758f, #f29111);
+            --progress: 80%;
+        }
+
+        .spring-bar {
+            background: linear-gradient(to right, #6db33f, #6db33f);
+            --progress: 85%;
+        }
+
+        /* Portfolio Tabs */
+        .portfolio-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+            gap: 10px;
+        }
+
+        .portfolio-tab {
+            padding: 10px 20px;
+            background: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .portfolio-tab:hover {
+            background: linear-gradient(to right, rgba(161, 140, 209, 0.1), rgba(251, 194, 235, 0.1));
+            transform: translateY(-3px);
+        }
+
+        .portfolio-tab.active {
+            background: linear-gradient(to right, #a18cd1, #fbc2eb);
+            color: white;
+            box-shadow: 0 5px 15px rgba(161, 140, 209, 0.4);
+        }
+
+        /* Project Categories */
+        .project-category {
+            margin-top: 60px;
+            display: none;
+        }
+
+        .project-category.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .category-title,
+        .featured-title {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: #333;
+            text-align: center;
+            position: relative;
+        }
+
+        .category-title::after,
+        .featured-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, #a18cd1, #fbc2eb);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .featured-title {
+            margin-top: 40px;
+        }
+
+        /* Portfolio Grid Adjustments */
+        .portfolio-grid {
+            margin-bottom: 20px;
+        }
+
+        /* Hide/Show Project Categories */
+        #java-projects,
+        #web-projects,
+        #js-projects,
+        #datastructure-projects {
+            display: none;
+        }
+
+        #java-projects.active,
+        #web-projects.active,
+        #js-projects.active,
+        #datastructure-projects.active {
+            display: block;
+        }
+
+        /* Mobile Responsiveness for Portfolio */
+        @media screen and (max-width: 768px) {
+            .portfolio-tab {
+                padding: 8px 15px;
+                font-size: 0.8rem;
+                margin: 5px;
+            }
+
+            .category-title,
+            .featured-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="#" class="logo">Portfolio</a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header -->
+    <header id="home">
+        <div class="header-content">
+            <h1>Pon Jagadhesh</h1>
+            <p class="subtitle">Java Backend Developer</p>
+            <a href="#portfolio" class="cta-button">View My Work</a>
+        </div>
+        <!-- <div class="header-left"> -->
+        <!-- <img src="https://www.franticpro.com/resource/newHeader/images/backenddeveloperfrantic.png" alt=""> -->
+        <!-- <img src="image2.png" alt="" srcset=""> -->
+        <!-- <img src="https://www.altisinfonet.com/wp-content/uploads/2023/08/backend-developer.png" alt="" srcset=""> -->
+        <!-- </div> -->
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="/placeholder.svg?height=400&width=400" alt="Profile Picture">
+                </div>
+                <div class="about-text">
+                    <h3>Fueled by Logic, Driven by Innovation.</h3>
+                    <p style=" font-size: 21px;"> Hi, I'm a passionate software developer currently honing my skills in
+                        Java, Servlets ,MickyLite and MySQL. I enjoy solving complex problems, building efficient
+                        backend
+                        systems, and developing user-friendly applications.</p>
+                    <p style=" font-size: 21px;">I thrive on challenges and continuously seek opportunities to innovate,
+                        learn, and grow as a developer</p>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills & Technologies Section -->
+    <section id="skills" class="skills-technologies">
+        <div class="container">
+            <h2 class="section-title">Skills & Technologies</h2>
+            <div class="skills-grid">
+                <!-- Java -->
+                <div class="skill-box" data-aos="fade-up">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java"
+                        class="skill-logo">
+                    <div class="skill-name">Java</div>
+                    <div class="skill-progress">
+                        <div class="skill-progress-bar java-bar"></div>
+                    </div>
+                </div>
+
+                <!-- JavaScript -->
+                <div class="skill-box" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                        alt="JavaScript" class="skill-logo">
+                    <div class="skill-name">JavaScript</div>
+                    <div class="skill-progress">
+                        <div class="skill-progress-bar js-bar"></div>
+                    </div>
+                </div>
+
+                <!-- HTML -->
+                <div class="skill-box" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML"
+                        class="skill-logo">
+                    <div class="skill-name">HTML</div>
+                    <div class="skill-progress">
+                        <div class="skill-progress-bar html-bar"></div>
+                    </div>
+                </div>
+
+                <!-- CSS -->
+                <div class="skill-box" data-aos="fade-up" data-aos-delay="300">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS"
+                        class="skill-logo">
+                    <div class="skill-name">CSS</div>
+                    <div class="skill-progress">
+                        <div class="skill-progress-bar css-bar"></div>
+                    </div>
+                </div>
+
+                <!-- MySQL -->
+
+                <div class="skill-box" data-aos="fade-up" data-aos-delay="400">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"
+                        class="skill-logo">
+                    <div class="skill-name">MySQL</div>
+                    <div class="skill-progress">
+                        <div class="skill-progress-bar mysql-bar"></div>
+                    </div>
+                </div>
+
+                <!-- Spring Boot -->
+                <div class="skill-box" data-aos="fade-up" data-aos-delay="500">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg"
+                        alt="Spring Boot" class="skill-logo">
+                    <div class="skill-name">Spring Boot</div>
+                    <div class="skill-progress">
+                        <div class="skill-progress-bar spring-bar"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2 class="section-title">My Portfolio</h2>
+
+            <h3 class="featured-title">Featured Projects</h3>
+            <div class="portfolio-grid featured-projects" style="margin-bottom: 50px;">
+                <!-- Portfolio Item 1 -->
+                <div class="portfolio-item" data-category="java">
+                    <img src="https://res.cloudinary.com/dmfduiboy/image/fetch/fl_immutable_cache%2Ccs_tinysrgb%2Cq_auto%2Cf_auto%2Cw_768/https://20597294.fs1.hubspotusercontent-na1.net/hubfs/20597294/1.%20Exploring%20IT%20asset%20management.png" alt="Java Project 1" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>IT Assert Management System</h3>
+                        <p>A Java-based >IT Assert Management system with database integration.</p>
+                        <a href="https://github.com/pon-jagadhesh/IT_assert_cocsole" class="view-project">View
+                            Project</a>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 2 -->
+                <div class="portfolio-item" data-category="java">
+                    <img src="svgviewer-png-output 3.png" alt="Project 2" class="portfolio-img" />
+                    <div class="portfolio-overlay">
+                        <h3>Stride Api</h3>
+                        <p>A lightweight API documentation tool.</p>
+                        <a href="https://ponm-5829-8443.zcodeusers.in/Stride%20docs/Stride%20docs/"
+                            class="view-project">View Project</a>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 3 -->
+                <div class="portfolio-item" data-category="js">
+                    <img src="image.png" alt="Project 3" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Workout Tracker</h3>
+                        <p>A fitness app with dynamic workout tracking.</p>
+                        <a href="#" class="view-project">View Project</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Portfolio Categories/Tabs -->
+            <div class="portfolio-tabs">
+                <button class="portfolio-tab active" data-filter="all">All Projects</button>
+                <button class="portfolio-tab" data-filter="java">Java</button>
+                <button class="portfolio-tab" data-filter="web">HTML/CSS</button>
+                <button class="portfolio-tab" data-filter="js">JavaScript</button>
+                <button class="portfolio-tab" data-filter="datastructure">Scratch</button>
+            </div>
+
+            <!-- Java Projects -->
+            <div class="project-category" id="java-projects">
+                <h3 class="category-title">Java Projects</h3>
+
+              
+                <div class="portfolio-grid">
+                    <div class="portfolio-item" data-category="java">
+                        <img src="https://res.cloudinary.com/dmfduiboy/image/fetch/fl_immutable_cache%2Ccs_tinysrgb%2Cq_auto%2Cf_auto%2Cw_768/https://20597294.fs1.hubspotusercontent-na1.net/hubfs/20597294/1.%20Exploring%20IT%20asset%20management.png" alt="Java Project 1" class="portfolio-img">
+                        <div class="portfolio-overlay">
+                            <h3>IT Assert Management System</h3>
+                            <p>A Java-based >IT Assert Management system with database integration.</p>
+                            <a href="https://github.com/pon-jagadhesh/IT_assert_cocsole" class="view-project">View Project</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" data-category="java">
+                        <img src="svgviewer-png-output 3.png" alt="Project 2" class="portfolio-img" />
+                        <div class="portfolio-overlay">
+                            <h3>Stride Api</h3>
+                            <p>A lightweight API documentation tool.</p>
+                            <a href="https://ponm-5829-8443.zcodeusers.in/Stride%20docs/Stride%20docs/"
+                                class="view-project">View Project</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" data-category="java">
+                        <img src="image1.png" alt="Java Project 3" class="portfolio-img">
+                        <div class="portfolio-overlay">
+                            <h3>Tree Set Implementaion</h3>
+                            <p>Banlanced tree using AVL tree balancing.</p>
+                            <a href="https://github.com/pon-jagadhesh/Tree-Map-Implementation" class="view-project">View
+                                Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HTML/CSS Projects -->
+            <div class="project-category" id="web-projects">
+                <h3 class="category-title">HTML/CSS Projects</h3>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item" data-category="web" style="background-color: #333;">
+                        <img src="GBarena-type.svg" alt="Web Project 1" class="portfolio-img">
+                        <div class="portfolio-overlay">
+                            <h3>Gaming Website</h3>
+                            <p>Responsive Gaming website with modern design principles.</p>
+                            <a href="#" class="view-project">View Project</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" data-category="web">
+                        <img src="Htmlassign1.png" alt="Web Project 2" class="portfolio-img" style="object-fit: cover;">
+                        <div class="portfolio-overlay">
+                            <h3>Photograpic webside</h3>
+                            <p>Clean and modern fully responsive photograpic webside template.</p>
+                            <a href="https://ponm-5829-8443.zcodeusers.in/para/assignmen%20018/project2.html"
+                                class="view-project">View Project</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" data-category="web">
+                        <img src="Hyperspace.png" alt="Web Project 3" class="portfolio-img" style="object-fit: cover;">
+                        <div class="portfolio-overlay">
+                            <h3>Landing Page</h3>
+                            <p>High-conversion landing page with CSS.</p>
+                            <a href="https://ponm-5829-8443.zcodeusers.in/para/assignment019/project1.html"
+                                class="view-project">View Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- JavaScript Projects -->
+            <div class="project-category" id="js-projects">
+                <h3 class="category-title">JavaScript Projects</h3>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item" data-category="js">
+                        <img src="image.png" alt="Project 3" class="portfolio-img">
+                        <div class="portfolio-overlay">
+                            <h3>Workout Tracker</h3>
+                            <p>A fitness app with dynamic workout tracking.</p>
+                            <a href="#" class="view-project">View Project</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" data-category="js">
+                        <img src="https://assets.isu.pub/document-structure/230525113249-0d50bfa2036bd5e7c9ff776d7feeb47d/v1/7b6ccaf9353b3c7da10cd594f8c825eb.jpeg"
+                            alt="JS Project 2" class="portfolio-img" style="object-fit: cover;">
+                        <div class="portfolio-overlay">
+                            <h3>Tip calculator</h3>
+                            <p>Interactive Tip calculator.</p>
+                            <a href="https://ponm-5829-8443.zcodeusers.in/Javascript/Assignment%20024/"
+                                class="view-project">View Project</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" data-category="js">
+                        <img src="js3.png" alt="JS Project 3" class="portfolio-img">
+                        <div class="portfolio-overlay">
+                            <h3>Type Application</h3>
+                            <p>Type app with score tracking and timer.</p>
+                            <a href="https://ponm-5829-8443.zcodeusers.in/Javascript/Assignment%20025/"
+                                class="view-project">View Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Structures Projects -->
+            <div class="project-category" id="datastructure-projects">
+                <h3 class="category-title">Scratch</h3>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item" data-category="datastructure">
+                        <img src="Logo_of_Geometry_Dash.svg.png" alt="DS Project 1" class="portfolio-img">
+                        <div class="portfolio-overlay">
+                            <h3>Geometry Dash</h3>
+                            <p>Highly animated and interactive game.</p>
+                            <a href="https://scratch.mit.edu/projects/1043777005/fullscreen/" class="view-project">View
+                                Project</a>
+                        </div>
+                    </div>
+                    <!-- <div class="portfolio-item" data-category="datastructure">
+                        <img src="/placeholder.svg?height=400&width=600" alt="DS Project 2" class="portfolio-img">
+                        <div class="portfolio-overlay">
+                            <h3>Sorting Algorithm Comparator</h3>
+                            <p>Performance analysis of various sorting algorithms.</p>
+                            <a href="#" class="view-project">View Project</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" data-category="datastructure">
+                        <img src="/placeholder.svg?height=400&width=600" alt="DS Project 3" class="portfolio-img">
+                        <div class="portfolio-overlay">
+                            <h3>Custom Data Structure Library</h3>
+                            <p>Implementation of advanced data structures in Java.</p>
+                            <a href="#" class="view-project">View Project</a>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <!-- <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Subject">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Contact Details</h3>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <span class="contact-icon">📱</span>
+                            <span class="contact-text">+91 9876543210</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon"><img
+                                    src="https://theworkflowacademy.com/wp-content/uploads/2024/03/zoho-mail.png"
+                                    alt="cliq" height="34px"></span>
+                            <span class="contact-text">pon.jagadhesh@example.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon"><img
+                                    src="https://static.zohocdn.com/chat/source/officechat/images/newlogo_white.svg"
+                                    alt="cliq"></span>
+                            <span class="contact-text">@ponjagadhesh</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="social-link">📱</a>
+                    <a href="#" class="social-link">📷</a>
+                    <a href="#" class="social-link">🐦</a>
+                    <a href="#" class="social-link">💼</a>
+                </div>
+            </div>
+            <p class="copyright">© 2025 Pon Jagadhesh. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add scrolled class to navbar when scrolling
+        window.addEventListener('scroll', function () {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Animate skill cards when they come into view
+        document.addEventListener('DOMContentLoaded', function () {
+            const skillBoxes = document.querySelectorAll('.skill-box');
+
+            // Function to check if element is in viewport
+            function isInViewport(element) {
+                const rect = element.getBoundingClientRect();
+                return (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                );
+            }
+
+            // Function to handle scroll event
+            function handleScroll() {
+                skillBoxes.forEach(box => {
+                    if (isInViewport(box)) {
+                        box.classList.add('animate');
+                    }
+                });
+            }
+
+            // Add scroll event listener
+            window.addEventListener('scroll', handleScroll);
+
+            // Check on initial load
+            handleScroll();
+
+            // Add hover interaction for skill boxes
+            skillBoxes.forEach(box => {
+                box.addEventListener('mouseenter', function () {
+                    this.style.transform = 'translateY(-15px) scale(1.05)';
+                    const logo = this.querySelector('.skill-logo');
+                    logo.style.transform = 'scale(1.1) rotate(5deg)';
+                });
+
+                box.addEventListener('mouseleave', function () {
+                    this.style.transform = '';
+                    const logo = this.querySelector('.skill-logo');
+                    logo.style.transform = '';
+                });
+            });
+        });
+
+        // Interactive skill progress bars
+        const skillBoxes = document.querySelectorAll('.skill-box');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progressBar = entry.target.querySelector('.skill-progress-bar');
+                    if (progressBar) {
+                        progressBar.style.width = progressBar.style.getPropertyValue('--progress') || '90%';
+                    }
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        skillBoxes.forEach(box => {
+            observer.observe(box);
+        });
+
+        // Portfolio filtering
+        document.addEventListener('DOMContentLoaded', function () {
+            const tabs = document.querySelectorAll('.portfolio-tab');
+            const categories = document.querySelectorAll('.project-category');
+
+            // Show Java projects by default (after featured projects)
+            document.getElementById('java-projects').classList.add('active');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function () {
+                    // Remove active class from all tabs
+                    tabs.forEach(t => t.classList.remove('active'));
+
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+
+                    const filter = this.getAttribute('data-filter');
+
+                    // Hide all project categories
+                    categories.forEach(category => {
+                        category.classList.remove('active');
+                    });
+
+                    // Show selected category
+                    if (filter === 'all') {
+                        // Show all categories when "All Projects" is selected
+                        categories.forEach(category => {
+                            category.classList.add('active');
+                        });
+                    } else {
+                        // Show only the selected category
+                        document.getElementById(`${filter}-projects`).classList.add('active');
+                    }
+                });
+            });
+
+            // Portfolio item hover effect enhancement
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+            portfolioItems.forEach(item => {
+                item.addEventListener('mouseenter', function () {
+                    const overlay = this.querySelector('.portfolio-overlay');
+                    overlay.style.opacity = '1';
+
+                    const img = this.querySelector('.portfolio-img');
+                    img.style.transform = 'scale(1.1)';
+                });
+
+                item.addEventListener('mouseleave', function () {
+                    const overlay = this.querySelector('.portfolio-overlay');
+                    overlay.style.opacity = '0';
+
+                    const img = this.querySelector('.portfolio-img');
+                    img.style.transform = 'scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

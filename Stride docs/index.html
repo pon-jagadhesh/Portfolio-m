@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stride API - Documentation</title>
+  <style>
+    :root {
+      --primary-color: #4a6eb5;
+      --secondary-color: #2d4373;
+      --accent-color: #61dafb;
+      --text-color: #333;
+      --light-bg: #f8f9fa;
+      --code-bg: #f5f5f5;
+      --border-color: #e1e4e8;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      padding: 2rem 0;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    nav {
+      background-color: var(--secondary-color);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 0;
+    }
+
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      padding: 1rem;
+      transition: background-color 0.3s;
+    }
+
+    .nav-links li a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 2rem 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-logo {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    p {
+      font-size: 1.1rem;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      padding: 3rem 0;
+    }
+
+    .feature-card {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 1.5rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .feature-icon {
+      font-size: 2rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    main {
+      padding: 2rem 0;
+    }
+
+    section {
+      margin-bottom: 3rem;
+      scroll-margin-top: 70px;
+      /* Ensures the section title is visible after scrolling */
+    }
+
+    h2 {
+      color: var(--primary-color);
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 0.5rem;
+      margin-top: 2rem;
+    }
+
+    h3 {
+      color: var(--secondary-color);
+      margin-top: 1.5rem;
+    }
+
+    code {
+      font-family: 'Courier New', Courier, monospace;
+      background-color: var(--code-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.9rem;
+    }
+
+    pre {
+      background-color: var(--code-bg);
+      padding: 1rem;
+      border-radius: 5px;
+      overflow-x: auto;
+      border: 1px solid var(--border-color);
+    }
+
+    pre code {
+      background-color: transparent;
+      padding: 0;
+    }
+
+    .tab-container {
+      margin: 2rem 0;
+    }
+
+    .tabs {
+      display: flex;
+      border-bottom: 1px solid var(--border-color);
+      flex-wrap: wrap;
+    }
+
+    .tab {
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      border: 1px solid transparent;
+      border-bottom: none;
+      background-color: var(--light-bg);
+      margin-right: 5px;
+      border-radius: 5px 5px 0 0;
+    }
+
+    .tab.active {
+      background-color: white;
+      border-color: var(--border-color);
+      font-weight: bold;
+    }
+
+    .tab-content {
+      display: none;
+      padding: 1rem;
+      border: 1px solid var(--border-color);
+      border-top: none;
+      background-color: white;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+
+    th,
+    td {
+      border: 1px solid var(--border-color);
+      padding: 0.5rem;
+      text-align: left;
+    }
+
+    th {
+      background-color: var(--light-bg);
+    }
+
+    .annotation {
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      background-color: var(--light-bg);
+      padding: 2rem 0;
+      text-align: center;
+      border-top: 1px solid var(--border-color);
+    }
+
+    @media (max-width: 768px) {
+      .nav-container {
+        flex-direction: column;
+      }
+
+      .nav-links {
+        width: 100%;
+        flex-direction: column;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      .tabs {
+        flex-direction: column;
+      }
+
+      .tab {
+        margin-bottom: 5px;
+        border: 1px solid var(--border-color);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="hero">
+        <img src="svgviewer-png-output_enhanced.png" class="hero-logo" alt="Stride API Logo">
+        <h1>Stride API</h1>
+        <p>A lightweight, annotation-based API documentation and testing framework for Java Servlets</p>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <div class="container nav-container">
+      <a href="#" class="logo">
+        <img src="svgviewer-png-output_enhanced.png" alt="Stride API Logo">
+        Stride API
+      </a>
+      <ul class="nav-links">
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#getting-started">Getting Started</a></li>
+        <li><a href="#annotations">Annotations</a></li>
+        <li><a href="#scanning">Scanning</a></li>
+        <li><a href="#examples">Examples</a></li>
+        <li><a href="#running">Running</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="features">
+      <div class="feature-card">
+        <div class="feature-icon">📝</div>
+        <h3>Automated Documentation</h3>
+        <p>Generate structured API documentation directly from your code using annotations.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔍</div>
+        <h3>API Testing</h3>
+        <p>Test your API endpoints efficiently with the integrated testing framework.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🧩</div>
+        <h3>Simple Integration</h3>
+        <p>Easy to integrate with existing Java Servlet applications without major refactoring.</p>
+      </div>
+    </div>
+
+    <main>
+      <section id="overview">
+        <h2>What is StrideAPI?</h2>
+        <p>Stride API is a lightweight, annotation-based API documentation and testing framework for Java Servlets. It
+          provides an automated way to generate structured API documentation, enabling developers to efficiently
+          understand and test their API endpoints. The framework scans servlets, extracts metadata, and generates
+          documentation with support for request parameters, headers, request bodies, and responses.</p>
+      </section>
+
+      <section id="getting-started">
+        <h2>Getting Started</h2>
+        <h3>Setup and Configuration</h3>
+        <ul>
+          <li>Download the required JAR file and HTML file. Place the JAR file inside the lib folder and the HTML file
+            inside the webapps directory</li>
+          Jar for <a href="StrideJavaX.jar" download="StrideJavaX.jar"> JavaX</a> <br>
+          Jar for <a href="StrideJakarta.jar">Jarkata</a> <br>
+          Our static <a href="Stride.html" download="Stride.html"> HTML </a><br>
+          <li>Download respective java file and apply it to your java directory </li>
+          Java file for <a href="">JavaX</a> <br>
+          Java file for <a href="">Jarkata</a>
+          <li>Apply appropriate annotations to your servlets.</li>
+          <li>Do configurationgiven below</li>
+        </ul>
+        <h4>Configuration File (<code>config.properties</code>)</h4>
+        <p>To configure the scanning mechanism, ensure that your <code>config.properties</code> file contains:</p>
+        <pre><code>package.name=com.yourpackage.name
+project.name=Your project Name </code></pre>
+
+        <ul>
+          <li><strong>package.name:</strong> Defines the root package to scan for servlets.</li>
+          <li><strong>project.name:</strong> Specifies the project name to be displayed in the documentation.</li>
+        </ul>
+        <pre><code><b> NOTE:Place this config file inside java/main/src </b></code></pre>
+
+
+        <p>Stride API scans all servlets annotated with <code>@WebServlet</code> and extracts relevant API metadata such
+          as:</p>
+        <ul>
+          <li><strong>Endpoints:</strong> The URL patterns mapped to the servlets.</li>
+          <li><strong>HTTP Methods:</strong> The supported HTTP request types such as GET, POST, PUT, DELETE.</li>
+          <li><strong>Request Parameters:</strong> The expected query or form parameters.</li>
+          <li><strong>Headers:</strong> The required and optional request headers.</li>
+          <li><strong>Request Body Schema:</strong> The expected structure of JSON or other request payloads.</li>
+          <li><strong>Response Structure:</strong> The status codes, response format, and sample responses.</li>
+        </ul>
+
+
+      </section>
+      <section id="running">
+        <h2>Running Stride API</h2>
+        <h3>Step 1: Build and Deploy</h3>
+        <ul>
+          <li>Download the required JAR file and HTML file. Place the JAR file inside the lib folder and the HTML file
+            inside the webapps directory</li>
+          <li>Download respective java file and apply it to your java directory </li>
+          <li>Apply appropriate annotations to your servlets.</li>
+          <li>Do Configuration given in overview </li>
+          <li>Deploy the application to a servlet container like Tomcat or Jetty.</li>
+          <li>Stride API will automatically scan and generate documentation.</li>
+        </ul>
+
+        <h3>Step 2: Access API Documentation</h3>
+        <p>The generated metadata can be integrated into a UI that allows:</p>
+        <ul>
+          <li>Viewing available endpoints.</li>
+          <li>Checking required parameters and responses.</li>
+          <li>Making test API requests.</li>
+        </ul>
+        <p>You can reach your page by changing the url by http://yourDomain/yourFolder/Stride.html</p>
+      </section>
+
+      <section id="annotations">
+        <h2>Annotations Supported</h2>
+        <p>Stride API provides several annotations to enrich API documentation by defining metadata directly within the
+          servlet classes.</p>
+
+        <div class="tab-container">
+          <div class="tabs">
+            <div class="tab active" data-tab="endpoint">Endpoint & Action</div>
+            <div class="tab" data-tab="param">Request Parameters</div>
+            <div class="tab" data-tab="header">Headers</div>
+            <div class="tab" data-tab="body">Request Body</div>
+            <div class="tab" data-tab="response">Response</div>
+          </div>
+
+          <div class="tab-content active" id="endpoint-tab">
+            <h3>Endpoint and Action Annotations</h3>
+            <p>These annotations define API endpoints and describe the actions they perform (for Custom-HTTP methods).
+            </p>
+            <div class="annotation">
+              <h4><code>@WebServlet</code></h4>
+              <p>Specifies a servlet as an API endpoint.</p>
+            </div>
+            <div class="annotation">
+              <h4><code>@ApiAction</code></h4>
+              <p>Describes a specific action performed by an endpoint.</p>
+              <pre><code>@ApiAction(actionName="getUsers", description="Fetches all users from the database")</code></pre>
+              Example:
+              <pre><code>
+@ApiAction(actionName = "GET")
+protected void handleAction1(HttpServletRequest request, HttpServletResponse response) throws IOException {
+   // your logic goes here 
+}
+              </code></pre>
+            </div>
+          </div>
+
+          <div class="tab-content" id="param-tab">
+            <h3>Request Parameter Annotations</h3>
+            <p>These annotations define the request parameters that an API method accepts.</p>
+            <div class="annotation">
+              <h4><code>@ApiParam</code></h4>
+              <p>Defines an individual query or form parameter.</p>
+              <li>Do Configuration given below </li>
+              <li>Deploy the application to a servlet container like Tomcat or Jetty.</li>
+              <li>Stride API will automatically scan and generate documentation.</li>
+              <pre><code>@ApiParam(name="userId", type="int")</code></pre>
+            </div>
+            <div class="annotation">
+              <h4><code>@ApiParamGroup</code></h4>
+              <p>Groups multiple parameters together.</p>
+              <pre><code>@ApiParamGroup({
+    @ApiParam(name="userId", type="int"),
+    @ApiParam(name="status", type="string")
+})</code></pre>
+              Example:
+              <pre><code>
+  @ApiParamGroup({
+    @ApiParam(name = "query", type = "string"),
+    @ApiParam(name = "filters", type = "JSON", schema = Filters.class)
+  })
+  protected void handleAction2(HttpServletRequest request, HttpServletResponse response) throws IOException {
+     // your logic goes here
+  }
+</code></pre>
+            </div>
+          </div>
+
+          <div class="tab-content" id="header-tab">
+            <h3>Header Annotations</h3>
+            <p>These annotations specify required or optional HTTP headers for API requests.</p>
+            <div class="annotation">
+              <h4><code>@ApiHeader</code></h4>
+              <p>Defines an expected header.</p>
+              <pre><code>@ApiHeader(name="Authorization", type="string")</code></pre>
+              Example:
+              <pre><code>
+  @ApiHeader(name = "Authorization", type = "string", required = true)
+protected void handleAction1(HttpServletRequest request, HttpServletResponse response) throws IOException {
+     // your logic goes here 
+}
+              </code></pre>
+            </div>
+          </div>
+
+          <div class="tab-content" id="body-tab">
+            <h3>Request Body Annotations</h3>
+            <p>Defines the expected structure for request payloads.</p>
+            <div class="annotation">
+              <h4><code>@ApiBody</code></h4>
+              <p>Describes a request body schema.</p>
+              <pre><code>@ApiBody(name="UserRequest", type="JSON", schema="User")</code></pre>
+              Example:
+              <pre><code>
+@ApiBody(name = "UserRequest", type = "JSON", schema = UserRequest.class)
+protected void handleAction1(HttpServletRequest request, HttpServletResponse response) throws IOException {
+   // your logic goes here 
+}
+              </code></pre>
+            </div>
+          </div>
+
+          <div class="tab-content" id="response-tab">
+            <h3>Response Annotations</h3>
+            <p>Define the possible responses for an API endpoint.</p>
+            <div class="annotation">
+              <h4><code>@ResponseParam</code></h4>
+              <p>Describes a single API response.</p>
+              <pre><code>@ResponseParam(responseCode="200", description="Success", schema=User.class)</code></pre>
+            </div>
+            <div class="annotation">
+              <h4><code>@ResponseParams</code></h4>
+              <p>Defines multiple response variations.</p>
+              <pre><code>@ResponseParams({
+    @ResponseParam(responseCode="200", description="Success", schema=User.class),
+    @ResponseParam(responseCode="400", description="Invalid request data")
+})</code></pre>
+              Example:
+              <pre><code>
+@ResponseParams({
+@ResponseParam(responseCode="200", description="Success", schema=User.class),
+@ResponseParam(responseCode="400", description="Invalid request data")
+})
+protected void handleAction1(HttpServletRequest request, HttpServletResponse response) throws IOException {
+// your logic goes here 
+}
+            </code></pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="examples">
+        <h2>Example Servlet Implementation</h2>
+        <p>Here's an example of how to implement a servlet with Stride API annotations:</p>
+        <pre><code>package hello;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import utils.ApiBody;
+import utils.ApiHeader;
+import utils.ResponseParam;
+
+@WebServlet("/user")
+public class UserServlet extends HttpServlet {
+
+    @ApiHeader(name="Authorization", type="string", required=true)
+    @ApiParam(name="userId", type="int")
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        // Read request parameters
+        int userId = Integer.parseInt(request.getParameter("userId"));
+
+        // Fetch user data from a database or API
+        User user = fetchUser(userId);
+
+        // Check if user exists
+        if (user == null) {
+            response.sendError(HttpServletResponse.SC_NOT_FOUND, "User not found");
+            return;
+        }
+
+        // Set response content type and write JSON response
+        response.setContentType("application/json");
+        response.getWriter().write(user.toJson());
+    }
+  
+    @ApiParam(name="userId", type="int")
+    @ApiParam(name="status", type="string")
+    @ResponseParam(
+      responseCode = "200",
+      description = "Successful response",
+      mediaType = "application/json",
+      headers = {"Content-Type: application/json"},
+      examples = {"{\"message\": \"Success\"}"}
+)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        // Read request parameters
+        int userId = Integer.parseInt(request.getParameter("userId"));
+        String status = request.getParameter("status");
+
+        // Update user status in a database or API
+        updateUserStatus(userId, status);
+
+        // Set response content type and write JSON response
+        response.setContentType("application/json");
+        response.getWriter().write("{\"message\": \"Status updated\"}");
+    }
+}
+</code></pre>
+        <p>This servlet defines:</p>
+        <ul>
+<li>A <code>GET /users</code> endpoint.</li>
+<li>A <code>userId</code> request parameter.</li>
+          <li>An <code>Authorization</code> header.</li>
+          <li>A request body (<code>UserRequest</code>).</li>
+          <li>Possible responses (<code>200 OK</code>, <code>404 Not Found</code>).</li>
+        </ul>
+      </section>
+
+      <section id="scanning">
+        <h2>Scanning and Extracting API Information</h2>
+        <p>The <code>ServletScanner</code> component of Stride API is responsible for scanning all servlets and
+          extracting metadata based on annotations. It captures details such as:</p>
+        <ul>
+          <li>Servlet Names and URL Mappings</li>
+          <li>Supported HTTP Methods</li>
+          <li>Request Parameters and Headers</li>
+          <li>Request Body Structure</li>
+          <li>Response Details and Examples</li>
+        </ul>
+
+        <h3>Example JSON Output</h3>
+        <p>The scanning process generates structured API documentation in JSON format:</p>
+        <pre><code>{
+    "name": "UserServlet",
+    "url": "/users",
+    "methods": ["GET", "POST"],
+    "requestDataName": [["userId"]],
+    "requestDataType": [["int"]],
+    "requestBodyName": [["UserRequest"]],
+    "requestBodyType": [["JSON"]],
+    "requestHeaderName": [["Authorization"]],
+    "requestHeaderType": [["string"]],
+    "bodyFields": [["name", "email", "age"]],
+    "response": [
+        {
+            "Method": "getUser",
+            "ResponseCode": "200",
+            "Description": "User retrieved successfully",
+            "MediaType": "application/json",
+            "Schema": "User",
+            "Deprecated": false
+        }
+    ],
+    "ProjectName": "Stride API"
+}</code></pre>
+      </section>
+
+
+
+
+      <!--       
+      <section id="future">
+        <h2>Future Enhancements</h2>
+        <p>Potential improvements for Stride API include:</p>
+        <ul>
+          <li><strong>Adding a Web UI</strong> for better visualization and interaction with API documentation.</li>
+          <li><strong>Enhancing Parameter Validation</strong> to support complex request structures.</li>
+          <li><strong>Supporting More HTTP Methods</strong> such as PATCH and OPTIONS.</li>
+          <li><strong>Integrating a Database</strong> to store API metadata for faster retrieval.</li>
+        </ul>
+      </section> -->
+    </main>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>Stride API - A lightweight, annotation-based API documentation and testing framework for Java Servlets</p>
+      <p>&copy; 2025 Stride API. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Tab functionality
+    const tabs = document.querySelectorAll('.tab');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Remove active class from all tabs and content
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+        // Add active class to clicked tab
+        tab.classList.add('active');
+
+        // Show corresponding content
+        const tabName = tab.getAttribute('data-tab');
+        document.getElementById(tabName + '-tab').classList.add('active');
+      });
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 60,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
