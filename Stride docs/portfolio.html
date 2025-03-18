@@ -898,6 +898,56 @@
                 font-size: 1.5rem;
             }
         }
+
+        .codeWar {
+            width: 420px;
+            height: 100px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-radius: 8px;
+            background: white;
+        }
+
+        .codeWar:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* GitHub Card Styling */
+        .github-card {
+            background: white;
+        }
+
+        .github-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #24292e;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 12px 20px;
+            border-radius: 6px;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .github-logo {
+            width: 24px;
+            height: 24px;
+        }
+
+        .github-button:hover {
+            background: black;
+            color: white;
+        }
+
+        .github-button:hover .github-logo {
+            fill: white;
+        }
     </style>
 </head>
 
@@ -917,7 +967,7 @@
     <header id="home">
         <div class="header-content">
             <h1>Pon Jagadhesh</h1>
-            <p class="subtitle">Java Backend Trainee</p>
+            <p class="subtitle">Java Backend Developer</p>
             <a href="#portfolio" class="cta-button">View My Work</a>
         </div>
         <!-- <div class="header-left"> -->
@@ -926,7 +976,6 @@
         <!-- <img src="https://www.altisinfonet.com/wp-content/uploads/2023/08/backend-developer.png" alt="" srcset=""> -->
         <!-- </div> -->
     </header>
-
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
@@ -959,40 +1008,7 @@
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java"
                         class="skill-logo">
                     <div class="skill-name">Java</div>
-                    <div class="skill-progress">
-                        <div class="skill-progress-bar java-bar"></div>
-                    </div>
-                </div>
 
-                <!-- JavaScript -->
-                <div class="skill-box" data-aos="fade-up" data-aos-delay="100">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-                        alt="JavaScript" class="skill-logo">
-                    <div class="skill-name">JavaScript</div>
-                    <div class="skill-progress">
-                        <div class="skill-progress-bar js-bar"></div>
-                    </div>
-                </div>
-
-
-                <!-- HTML -->
-                <div class="skill-box" data-aos="fade-up" data-aos-delay="200">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML"
-                        class="skill-logo">
-                    <div class="skill-name">HTML</div>
-                    <div class="skill-progress">
-                        <div class="skill-progress-bar html-bar"></div>
-                    </div>
-                </div>
-
-                <!-- CSS -->
-                <div class="skill-box" data-aos="fade-up" data-aos-delay="300">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS"
-                        class="skill-logo">
-                    <div class="skill-name">CSS</div>
-                    <div class="skill-progress">
-                        <div class="skill-progress-bar css-bar"></div>
-                    </div>
                 </div>
 
                 <!-- MySQL -->
@@ -1001,28 +1017,61 @@
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"
                         class="skill-logo">
                     <div class="skill-name">MySQL</div>
-                    <div class="skill-progress">
-                        <div class="skill-progress-bar mysql-bar"></div>
-                    </div>
+
                 </div>
 
-                <!-- Spring Boot -->
-                <!-- <div class="skill-box" data-aos="fade-up" data-aos-delay="500">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg"
-                        alt="Spring Boot" class="skill-logo">
-                    <div class="skill-name">Spring Boot</div>
-                    <div class="skill-progress">
-                        <div class="skill-progress-bar spring-bar"></div>
-                    </div>
-                </div> -->
+                <!-- JavaScript -->
+                <div class="skill-box" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                        alt="JavaScript" class="skill-logo">
+                    <div class="skill-name">JavaScript</div>
+
+                </div>
+
+
+                <!-- HTML -->
+                <div class="skill-box" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML"
+                        class="skill-logo">
+                    <div class="skill-name">HTML</div>
+
+                </div>
+
+                <!-- CSS -->
+                <div class="skill-box" data-aos="fade-up" data-aos-delay="300">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS"
+                        class="skill-logo">
+                    <div class="skill-name">CSS</div>
+
+                </div>
             </div>
+            <h3 class="featured-title">Achivements</h3>
+
+            <div class="achieve" style="display: flex; gap: 30px; justify-content: center; align-items: center;">
+                <div class="codeWar" data-aos="fade-up" data-aos-delay="500">
+                    <img src="https://www.codewars.com/users/Jagadhesh-/badges/large" alt="Codewars Badge"
+                        class="skill-logo" style="width: 400px; height: 100px; margin-bottom: 0;">
+                </div>
+                <div class="codeWar github-card" data-aos="fade-up" data-aos-delay="500">
+                    <a href="https://github.com/pon-jagadhesh?tab=repositories" target="_blank" class="github-button">
+                        <svg class="github-logo" viewBox="0 0 24 24" fill="black" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.207 11.387.6.113.793-.263.793-.583v-2.2C6 21.212 5.225 19.312 5 18.5c-.15-.375-.787-1.5-1.337-1.8-.457-.238-1.112-.825.088-.812.963.012 1.65.887 1.875 1.25 1.1 1.85 2.887 1.313 3.6 1 .1-.8.437-1.313.8-1.612-2.662-.3-5.462-1.3-5.462-5.812 0-1.287.463-2.338 1.225-3.162-.123-.3-.537-1.537.113-3.2 0 0 1-.325 3.275 1.2a11.2 11.2 0 016 0c2.275-1.525 3.275-1.2 3.275-1.2.65 1.663.238 2.9.113 3.2.762.825 1.225 1.875 1.225 3.162 0 4.525-2.8 5.513-5.475 5.8.45.388.85 1.15.85 2.325v3.45c0 .325.188.7.8.575C20.563 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z" />
+                        </svg>
+                        View on GitHub
+                    </a>
+
+                    </a>
+                </div>
+            </div>
+
         </div>
     </section>
 
     <!-- Portfolio Section -->
     <section id="portfolio" class="portfolio">
         <div class="container">
-            <h2 class="section-title">My Works</h2>
+            <h2 class="section-title">Line of Works</h2>
 
             <h3 class="featured-title">Featured Projects</h3>
             <div class="portfolio-grid featured-projects" style="margin-bottom: 50px;">
@@ -1044,26 +1093,29 @@
                     <div class="portfolio-overlay">
                         <h3>Workout Tracker</h3>
                         <p>A fitness app with dynamic workout tracking.</p>
-                        <a target="_blank" href="https://67d7fd08c4b82e78e70df9ca--fancy-fox-aa10df.netlify.app/workout/doworkout.html" class="view-project">View Project</a>
+                        <a target="_blank"
+                            href="https://67d7fd08c4b82e78e70df9ca--fancy-fox-aa10df.netlify.app/workout/doworkout.html"
+                            class="view-project">View Project</a>
                     </div>
                 </div>
 
-            <!-- Portfolio Item 1 -->
-            <div class="portfolio-item" data-category="java">
-                <img src="https://res.cloudinary.com/dmfduiboy/image/fetch/fl_immutable_cache%2Ccs_tinysrgb%2Cq_auto%2Cf_auto%2Cw_768/https://20597294.fs1.hubspotusercontent-na1.net/hubfs/20597294/1.%20Exploring%20IT%20asset%20management.png"
-                    alt="Java Project 1" class="portfolio-img">
-                <div class="portfolio-overlay">
-                    <h3>IT Assert Management System</h3>
-                    <p>A Java-based >IT Assert Management system with database integration.</p>
-                    <a target="_blank" href="https://github.com/pon-jagadhesh/IT_assert_cocsole" class="view-project">View
-                        Project</a>
+                <!-- Portfolio Item 1 -->
+                <div class="portfolio-item" data-category="java">
+                    <img src="https://res.cloudinary.com/dmfduiboy/image/fetch/fl_immutable_cache%2Ccs_tinysrgb%2Cq_auto%2Cf_auto%2Cw_768/https://20597294.fs1.hubspotusercontent-na1.net/hubfs/20597294/1.%20Exploring%20IT%20asset%20management.png"
+                        alt="Java Project 1" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>IT Assert Management System</h3>
+                        <p>A Java-based >IT Assert Management system with database integration.</p>
+                        <a target="_blank" href="https://github.com/pon-jagadhesh/IT_assert_cocsole"
+                            class="view-project">View
+                            Project</a>
+                    </div>
                 </div>
             </div>
-        </div>
             <!-- Portfolio Categories/Tabs -->
             <div class="portfolio-tabs">
-                <button class="portfolio-tab active" data-filter="all">All Projects</button>
-                <button class="portfolio-tab" data-filter="java">Java</button>
+                <button class="portfolio-tab" data-filter="all">All Projects</button>
+                <button class="portfolio-tab active" data-filter="java">Java</button>
                 <button class="portfolio-tab" data-filter="web">HTML/CSS</button>
                 <button class="portfolio-tab" data-filter="js">JavaScript</button>
                 <button class="portfolio-tab" data-filter="datastructure">Scratch</button>
@@ -1089,7 +1141,8 @@
                         <div class="portfolio-overlay">
                             <h3>Tree Set Implementaion</h3>
                             <p>Banlanced tree using AVL tree balancing.</p>
-                            <a target="_blank" href="https://github.com/pon-jagadhesh/Tree-Map-Implementation" class="view-project">View
+                            <a target="_blank" href="https://github.com/pon-jagadhesh/Tree-Map-Implementation"
+                                class="view-project">View
                                 Project</a>
                         </div>
                     </div>
@@ -1099,7 +1152,8 @@
                         <div class="portfolio-overlay">
                             <h3>IT Assert Management System</h3>
                             <p>A Java-based >IT Assert Management system with database integration.</p>
-                            <a target="_blank" href="https://github.com/pon-jagadhesh/IT_assert_cocsole" class="view-project">View
+                            <a target="_blank" href="https://github.com/pon-jagadhesh/IT_assert_cocsole"
+                                class="view-project">View
                                 Project</a>
                         </div>
                     </div>
@@ -1115,7 +1169,9 @@
                         <div class="portfolio-overlay">
                             <h3>Gaming Website</h3>
                             <p>Responsive Gaming website with modern design principles.</p>
-                            <a target="_blank" href="https://67d80456c6d9fe007390bb5d--radiant-bublanina-4637c0.netlify.app/home" class="view-project">View Project</a>
+                            <a target="_blank"
+                                href="https://67d80456c6d9fe007390bb5d--radiant-bublanina-4637c0.netlify.app/home"
+                                class="view-project">View Project</a>
                         </div>
                     </div>
                     <div class="portfolio-item" data-category="web">
@@ -1123,7 +1179,8 @@
                         <div class="portfolio-overlay">
                             <h3>Photograpic webside</h3>
                             <p>Clean and modern fully responsive photograpic webside template.</p>
-                            <a target="_blank" href="https://ponm-5829-8443.zcodeusers.in/para/assignmen%20018/project2.html"
+                            <a target="_blank"
+                                href="https://ponm-5829-8443.zcodeusers.in/para/assignmen%20018/project2.html"
                                 class="view-project">View Project</a>
                         </div>
                     </div>
@@ -1132,8 +1189,10 @@
                         <div class="portfolio-overlay">
                             <h3>Landing Page</h3>
                             <p>High-conversion landing page with CSS.</p>
-                            <a target="_blank" href="https://ponm-5829-8443.zcodeusers.in/para/assignment019/project1.html"
-                                class="view-project">View Project</a>
+                            <a target="_blank"
+                                href="https://ponm-5829-8443.zcodeusers.in/para/assignment019/project1.html"
+                                class="view-project">View
+                                Project</a>
                         </div>
                     </div>
                 </div>
@@ -1148,7 +1207,9 @@
                         <div class="portfolio-overlay">
                             <h3>Workout Tracker</h3>
                             <p>A fitness app with dynamic workout tracking.</p>
-                            <a target="_blank" href="https://67d7fd08c4b82e78e70df9ca--fancy-fox-aa10df.netlify.app/workout/doworkout.html" class="view-project">View Project</a>
+                            <a target="_blank"
+                                href="https://67d7fd08c4b82e78e70df9ca--fancy-fox-aa10df.netlify.app/workout/doworkout.html"
+                                class="view-project">View Project</a>
                         </div>
                     </div>
                     <div class="portfolio-item" data-category="js">
@@ -1182,16 +1243,19 @@
                         <div class="portfolio-overlay">
                             <h3>Geometry Dash</h3>
                             <p>Highly animated and interactive game.</p>
-                            <a target="_blank" href="https://scratch.mit.edu/projects/1043777005/fullscreen/" class="view-project">View
+                            <a target="_blank" href="https://scratch.mit.edu/projects/1043777005/fullscreen/"
+                                class="view-project">View
                                 Project</a>
                         </div>
                     </div>
                     <div class="portfolio-item" data-category="datastructure">
-                        <img src="https://i.pinimg.com/736x/7a/6d/01/7a6d011b79cc6ed348dab97f59eb75fe.jpg" alt="DS Project 2" class="portfolio-img">
+                        <img src="https://i.pinimg.com/736x/7a/6d/01/7a6d011b79cc6ed348dab97f59eb75fe.jpg"
+                            alt="DS Project 2" class="portfolio-img">
                         <div class="portfolio-overlay">
                             <h3>Clock</h3>
                             <p>Basic clock</p>
-                            <a target="_blank" href="https://scratch.mit.edu/projects/1030525107/" class="view-project">View Project</a>
+                            <a target="_blank" href="https://scratch.mit.edu/projects/1030525107/"
+                                class="view-project">View Project</a>
                         </div>
                     </div>
                     <div class="portfolio-item" data-category="datastructure">
@@ -1199,9 +1263,10 @@
                         <div class="portfolio-overlay">
                             <h3>Shooting Game</h3>
                             <p>Intresting shooting game</p>
-                            <a target="_blank" href="https://scratch.mit.edu/projects/1037809585/fullscreen/" class="view-project">View Project</a>
+                            <a target="_blank" href="https://scratch.mit.edu/projects/1037809585/fullscreen/"
+                                class="view-project">View Project</a>
                         </div>
-                    </div> 
+                    </div>
                 </div>
             </div>
         </div>
@@ -1257,7 +1322,7 @@
                     </div>
                 </div>
             </div>
-            <p class="copyright">© 2025 Pon Jagadhesh. All Rights Reserved.</p>
+            <p class="copyright"></p>
         </div>
     </footer>
 
